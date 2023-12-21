@@ -49,9 +49,9 @@ message_rect = Message.get_rect(center=(mes.width,mes.height))
 
 #Chèn âm thanh
 flap_sound = pygame.mixer.Sound('sound/sfx_wing.wav')
-
 score_sound_countdown = 200
 score_sound = pygame.mixer.Sound('sound/sfx_point.wav')
+
 # Vòng lặp game
 running = True
 while running:
@@ -70,6 +70,7 @@ while running:
                     start = False
                     bird_rect.center = (bird.width,bird.height)
                     score.score = 0
+                    pipe_list.clear()
                 else:
                     start = True
         if event.type == spawnpipe: 
@@ -110,8 +111,6 @@ while running:
         if score.hscore < score.score:
             score.hscore = score.score
         score.score_view(screen, game_play)
-        pipe_list.clear()
-    
     #xử lí Floor
     fl.x -=1
     fl.y = size.bg.height-fl.height+50+56
@@ -119,7 +118,6 @@ while running:
         fl.x = 0
     screen.blit(Floor,(fl.x,fl.y))
     screen.blit(Floor,(fl.width+fl.x,fl.y))
-
     pygame.display.update()
 
 pygame.quit()
